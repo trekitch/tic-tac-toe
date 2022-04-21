@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#game-area {
+    flex-grow: 1;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px;
+    text-align: center;
+    font-size: 30px
+}
+
+.board > div {
+    border: 1px solid black;
+}
