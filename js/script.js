@@ -6,7 +6,7 @@ const playerFactory = (name, icon) => {
 //gameboard module for storing the gameboard array
 //IIFE
 const gameBoard = (() => {
-    const board = ["x", "o", "x", "o", "x", "o", "x", "o", "x"];
+    const board = ["", "", "", "", "", "", "", "", ""];
     return {
         board,
     };
@@ -14,4 +14,17 @@ const gameBoard = (() => {
 
 console.log(gameBoard.board);
 
-function renderBoard(baordArray) {}
+function renderBoard(boardArray) {
+    const boardDisplay = document.querySelector(".board");
+    boardArray.forEach((element, index) => {
+        let div = document.createElement("div");
+        div.textContent = element;
+        div.classList.add(index);
+        boardDisplay.appendChild(div);
+    });
+}
+
+renderBoard(gameBoard.board);
+
+//controls game flow
+function game() {}
