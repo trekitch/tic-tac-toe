@@ -18,20 +18,29 @@ const gameBoard = (() => {
             boardDisplay.appendChild(div);
         });
     };
+
+    const boardMoves = (arr, val) => {
+        var indexes = [],
+            i;
+        for (i = 0; i < arr.length; i++) if (arr[i] === val) indexes.push(i);
+        return indexes;
+    };
+
     return {
         board,
         renderBoard,
         boardDisplay,
+        boardMoves,
     };
 })();
 
 //controls game flow
-function game() {
-    const playerOne = playerFactory("Jim", "X");
-    const playerTwo = playerFactory("Sam", "O");
+const game = (() => {
+    const playerOne = playerFactory("Player 1", "X");
+    const playerTwo = playerFactory("Player 2", "O");
     gameBoard.renderBoard();
-    console.log(playerOne);
-    const turns = 9;
+    let turns = 0;
+    let obj = playerOne;
 
     gameBoard.boardDisplay.addEventListener("click", (e) => {
         if (e.target.textContent) {
@@ -39,11 +48,18 @@ function game() {
         } else {
             let squareIndex = e.target.getAttribute("data-index");
             console.log(squareIndex);
-            e.target.textContent = playerOne.icon;
-            gameBoard.board[squareIndex] = playerOne.icon;
+            e.target.textContent = obj.icon;
+            gameBoard.board[squareIndex] = obj.icon;
             console.log(gameBoard.board);
+
+            //switches between player
+            if (obj == playerOne) {
+                obj = playerTwo;
+                turns++;
+            } else {
+                obj = playerOne;
+                turns++;
+            }
         }
     });
-}
-
-game();
+})();
