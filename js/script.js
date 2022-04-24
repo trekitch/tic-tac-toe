@@ -14,7 +14,7 @@ const gameBoard = (() => {
         board.forEach((element, index) => {
             let div = document.createElement("div");
             div.textContent = element;
-            div.classList.add(index);
+            div.setAttribute("data-index", index);
             boardDisplay.appendChild(div);
         });
     };
@@ -33,15 +33,17 @@ function game() {
     console.log(playerOne);
     const turns = 9;
 
-    for (let index = 0; index <= turns; index++) {
-        gameBoard.boardDisplay.addEventListener("click", (e) => {
-            if (e.target.textContent) {
-                return;
-            } else {
-                e.target.textContent = playerOne.icon;
-            }
-        });
-    }
+    gameBoard.boardDisplay.addEventListener("click", (e) => {
+        if (e.target.textContent) {
+            return;
+        } else {
+            let squareIndex = e.target.getAttribute("data-index");
+            console.log(squareIndex);
+            e.target.textContent = playerOne.icon;
+            gameBoard.board[squareIndex] = playerOne.icon;
+            console.log(gameBoard.board);
+        }
+    });
 }
 
 game();
