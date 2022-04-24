@@ -25,7 +25,23 @@ const gameBoard = (() => {
     };
 })();
 
-gameBoard.renderBoard();
-
 //controls game flow
-function game() {}
+function game() {
+    const playerOne = playerFactory("Jim", "X");
+    const playerTwo = playerFactory("Sam", "O");
+    gameBoard.renderBoard();
+    console.log(playerOne);
+    const turns = 9;
+
+    for (let index = 0; index <= turns; index++) {
+        gameBoard.boardDisplay.addEventListener("click", (e) => {
+            if (e.target.textContent) {
+                return;
+            } else {
+                e.target.textContent = playerOne.icon;
+            }
+        });
+    }
+}
+
+game();
