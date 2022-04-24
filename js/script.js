@@ -7,24 +7,25 @@ const playerFactory = (name, icon) => {
 //IIFE
 const gameBoard = (() => {
     const board = ["", "", "", "", "", "", "", "", ""];
+
+    const boardDisplay = document.querySelector(".board");
+
+    const renderBoard = () => {
+        board.forEach((element, index) => {
+            let div = document.createElement("div");
+            div.textContent = element;
+            div.classList.add(index);
+            boardDisplay.appendChild(div);
+        });
+    };
     return {
         board,
+        renderBoard,
+        boardDisplay,
     };
 })();
 
-console.log(gameBoard.board);
-
-function renderBoard(boardArray) {
-    const boardDisplay = document.querySelector(".board");
-    boardArray.forEach((element, index) => {
-        let div = document.createElement("div");
-        div.textContent = element;
-        div.classList.add(index);
-        boardDisplay.appendChild(div);
-    });
-}
-
-renderBoard(gameBoard.board);
+gameBoard.renderBoard();
 
 //controls game flow
 function game() {}
