@@ -8,7 +8,12 @@ body {
     flex-direction: column;
 }
 
-#game-area {
+.game-area {
+    flex-grow: 1;
+    display: none;
+}
+
+.playerInfo{
     flex-grow: 1;
 }
 

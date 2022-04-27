@@ -32,6 +32,7 @@ const game = (() => {
     gameBoard.renderBoard();
     const playerOne = playerFactory("Player 1", "X");
     const playerTwo = playerFactory("Player 2", "O");
+    //player 1 takes the first turn
     let obj = playerOne;
 
     const currentPlayer = document.createElement("p");
@@ -39,6 +40,10 @@ const game = (() => {
 
     let winner = document.createElement("p");
     const winnerDisplay = document.querySelector(".displayWinner");
+
+    const startBtn = document.querySelector(".start");
+    const gameArea = document.querySelector(".game-area");
+    const playerInfo = document.querySelector(".playerInfo");
 
     const restartBtn = document.querySelector(".restart");
 
@@ -80,6 +85,11 @@ const game = (() => {
         gameBoard.board.forEach((element, index) => (gameBoard.board[index] = ""));
         console.log(gameBoard.board);
         gameBoard.renderBoard();
+    });
+
+    startBtn.addEventListener("click", () => {
+        gameArea.style.display = "inline";
+        playerInfo.style.display = "none";
     });
 
     function checkWinner(arr, player) {
