@@ -44,6 +44,9 @@ const game = (() => {
 
     let gameOver = false;
 
+    currentPlayer.textContent = `${playerOne.name}'s turn`;
+    playerDisplay.appendChild(currentPlayer);
+
     gameBoard.boardDisplay.addEventListener("click", (e) => {
         if (e.target.textContent) {
             //prevents double moves
