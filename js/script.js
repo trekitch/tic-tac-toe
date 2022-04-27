@@ -82,46 +82,60 @@ const game = (() => {
 
     function checkWinner(arr, player) {
         if (arr[0] == player.icon && arr[1] == player.icon && arr[2] == player.icon) {
+            //top row horizontal win
             console.log(`${player.name} wins!!!`);
             winner.textContent = `${player.name} wins!!!`;
             winnerDisplay.appendChild(winner);
             return true;
         } else if (arr[2] == player.icon && arr[5] == player.icon && arr[8] == player.icon) {
+            //right side vertical win
             console.log(`${player.name} wins!!!`);
             winner.textContent = `${player.name} wins!!!`;
             winnerDisplay.appendChild(winner);
             return true;
         } else if (arr[8] == player.icon && arr[7] == player.icon && arr[6] == player.icon) {
+            //bottom row horizontal win
             console.log(`${player.name} wins!!!`);
             winner.textContent = `${player.name} wins!!!`;
             winnerDisplay.appendChild(winner);
             return true;
         } else if (arr[6] == player.icon && arr[3] == player.icon && arr[0] == player.icon) {
+            //left side vertical win
             console.log(`${player.name} wins!!!`);
             winner.textContent = `${player.name} wins!!!`;
             winnerDisplay.appendChild(winner);
             return true;
         } else if (arr[0] == player.icon && arr[4] == player.icon && arr[8] == player.icon) {
+            //top left diagonal win
             console.log(`${player.name} wins!!!`);
             winner.textContent = `${player.name} wins!!!`;
             winnerDisplay.appendChild(winner);
             return true;
         } else if (arr[2] == player.icon && arr[4] == player.icon && arr[6] == player.icon) {
+            //top right diagonal win
             console.log(`${player.name} wins!!!`);
             winner.textContent = `${player.name} wins!!!`;
             winnerDisplay.appendChild(winner);
             return true;
         } else if (arr[1] == player.icon && arr[4] == player.icon && arr[7] == player.icon) {
+            //middle row vertical win
             console.log(`${player.name} wins!!!`);
             winner.textContent = `${player.name} wins!!!`;
             winnerDisplay.appendChild(winner);
             return true;
-        } else if (arr[3] == player.icon && arr[4] == player.icon && arr[8] == player.icon) {
+        } else if (arr[3] == player.icon && arr[4] == player.icon && arr[5] == player.icon) {
+            //middle row horizontal win
             console.log(`${player.name} wins!!!`);
             winner.textContent = `${player.name} wins!!!`;
             winnerDisplay.appendChild(winner);
             return true;
         } else {
+            if (arr.includes("") == false) {
+                console.log("It's a tie!!");
+                winner.textContent = "It's a tie!!";
+                winnerDisplay.appendChild(winner);
+                return true;
+            }
             return false;
         }
     }
