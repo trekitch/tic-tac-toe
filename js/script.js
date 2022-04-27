@@ -6,11 +6,12 @@ const playerFactory = (name, icon) => {
 //gameboard module for storing the gameboard array
 //IIFE
 const gameBoard = (() => {
-    const board = ["", "", "", "", "", "", "", "", ""];
+    let board = ["", "", "", "", "", "", "", "", ""];
 
     const boardDisplay = document.querySelector(".board");
 
     const renderBoard = () => {
+        boardDisplay.textContent = "";
         board.forEach((element, index) => {
             let div = document.createElement("div");
             div.textContent = element;
@@ -19,26 +20,18 @@ const gameBoard = (() => {
         });
     };
 
-    const boardMoves = (arr, val) => {
-        var indexes = [],
-            i;
-        for (i = 0; i < arr.length; i++) if (arr[i] === val) indexes.push(i);
-        return indexes;
-    };
-
     return {
         board,
         renderBoard,
         boardDisplay,
-        boardMoves,
     };
 })();
 
 //controls game flow
 const game = (() => {
+    gameBoard.renderBoard();
     const playerOne = playerFactory("Player 1", "X");
     const playerTwo = playerFactory("Player 2", "O");
-    gameBoard.renderBoard();
     let obj = playerOne;
 
     const currentPlayer = document.createElement("p");
@@ -46,6 +39,8 @@ const game = (() => {
 
     let winner = document.createElement("p");
     const winnerDisplay = document.querySelector(".displayWinner");
+
+    const restartBtn = document.querySelector(".restart");
 
     let gameOver = false;
 
@@ -55,10 +50,8 @@ const game = (() => {
             return;
         } else if (gameOver == false) {
             let squareIndex = e.target.getAttribute("data-index");
-            console.log(squareIndex);
             e.target.textContent = obj.icon;
             gameBoard.board[squareIndex] = obj.icon;
-            console.log(gameBoard.board);
             if (gameOver == false) {
                 //switches between player
                 if (obj == playerOne) {
@@ -78,6 +71,12 @@ const game = (() => {
         } else {
             console.log("Game Over");
         }
+    });
+
+    restartBtn.addEventListener("click", () => {
+        gameBoard.board.forEach((element, index) => (gameBoard.board[index] = ""));
+        console.log(gameBoard.board);
+        gameBoard.renderBoard();
     });
 
     function checkWinner(arr, player) {
