@@ -6,6 +6,26 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+header{
+    font-size: 90px;
+    padding: 30px 15px;
+}
+
+.diplayPlayer,
+.displayWinner{
+    font-size: 35px;
+    padding-bottom: 15px;
+    margin-top: 10px;
+}
+
+.restart{
+    margin-top: 30px;
+    padding: 15px 25px;
 }
 
 .game-area {
@@ -19,12 +39,20 @@ body {
 
 .board {
     display: grid;
-    grid-template-columns: 50px 50px 50px;
-    grid-template-rows: 50px 50px 50px;
+    height: 500px;
+    width: 500px;
+    grid-auto-columns:1fr;
+    grid-auto-rows:1fr;
     text-align: center;
-    font-size: 30px
+    font-size: 120px;
+    overflow: hidden;
+    margin: auto;
 }
 
-.board > div {
-    border: 1px solid black;
+.board div {
+    outline: 2px solid #000;
 }
+
+.board div:last-child {
+    grid-area:3/3;
+  }
