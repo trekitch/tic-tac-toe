@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:ital,wght@0,200;0,300;0,800;0,805;1,200&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 body {
     height: 100vh;
@@ -9,32 +12,47 @@ body {
     width: 80%;
     margin: auto;
     text-align: center;
+    border: 2px solid grey;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
 }
 
 header{
     font-size: 90px;
-    padding: 30px 15px;
+    padding: 15px 15px;
+    font-weight: 800;
+}
+
+header,
+footer{
+    background-color: grey;
+}
+
+footer{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .diplayPlayer,
 .displayWinner{
     font-size: 35px;
-    padding-bottom: 15px;
     margin-top: 10px;
 }
 
 .restart{
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 15px 25px;
 }
 
 .game-area {
     flex-grow: 1;
     display: none;
+    background-color: #F0F7F4;
 }
 
 .playerInfo{
     flex-grow: 1;
+    background-color: #F0F7F4;
 }
 
 .board {
