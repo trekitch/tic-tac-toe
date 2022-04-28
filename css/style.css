@@ -53,6 +53,31 @@ footer{
 .playerInfo{
     flex-grow: 1;
     background-color: #F0F7F4;
+    padding-top: 100px;
+}
+
+.playerInfo input{
+    background-color: #FFFFFF;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  padding: 7px;
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+.start,
+.restart{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 25px;
+    
+}
+
+.info label{
+    font-weight: 800;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .board {
