@@ -30,11 +30,9 @@ const gameBoard = (() => {
 //controls game flow
 const game = (() => {
     gameBoard.renderBoard();
-    let playerOne = playerFactory("Player 1", "X");
-    let playerTwo = playerFactory("Player 2", "O");
 
     //player 1 takes the first turn
-    let obj = playerOne;
+    let obj;
 
     const currentPlayer = document.createElement("p");
     const playerDisplay = document.querySelector(".diplayPlayer");
@@ -98,6 +96,8 @@ const game = (() => {
         playerInfo.style.display = "none";
         playerOne = playerFactory(playerOneName, "X");
         playerTwo = playerFactory(playerTwoName, "O");
+
+        obj = playerOne;
 
         currentPlayer.textContent = `${playerOne.name}'s turn`;
         playerDisplay.appendChild(currentPlayer);
