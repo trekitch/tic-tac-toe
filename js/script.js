@@ -77,6 +77,7 @@ const game = (() => {
         }
     });
 
+    //restarts the game
     restartBtn.addEventListener("click", () => {
         gameBoard.board.forEach((element, index) => (gameBoard.board[index] = ""));
         console.log(gameBoard.board);
@@ -84,10 +85,14 @@ const game = (() => {
         gameOver = false;
         winnerDisplay.textContent = "";
 
+        //sets starting player
+        obj = playerOne;
+
         currentPlayer.textContent = `${playerOne.name}'s turn`;
         playerDisplay.appendChild(currentPlayer);
     });
 
+    //starts the game
     startBtn.addEventListener("click", () => {
         const playerOneName = document.querySelector("#player1Name").value;
         const playerTwoName = document.querySelector("#player2Name").value;
@@ -97,6 +102,7 @@ const game = (() => {
         playerOne = playerFactory(playerOneName, "X");
         playerTwo = playerFactory(playerTwoName, "O");
 
+        //set starting player
         obj = playerOne;
 
         currentPlayer.textContent = `${playerOne.name}'s turn`;
