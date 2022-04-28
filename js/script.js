@@ -109,6 +109,7 @@ const game = (() => {
         playerDisplay.appendChild(currentPlayer);
     });
 
+    //determines the winner by checking the place of moves
     function checkWinner(arr, player) {
         if (arr[0] == player.icon && arr[1] == player.icon && arr[2] == player.icon) {
             //top row horizontal win
@@ -159,6 +160,7 @@ const game = (() => {
             winnerDisplay.appendChild(winner);
             return true;
         } else {
+            //if not one wins it's a tie
             if (arr.includes("") == false) {
                 console.log("It's a tie!!");
                 winner.textContent = "It's a tie!!";
