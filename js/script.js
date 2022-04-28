@@ -30,8 +30,8 @@ const gameBoard = (() => {
 //controls game flow
 const game = (() => {
     gameBoard.renderBoard();
-    const playerOne = playerFactory("Player 1", "X");
-    const playerTwo = playerFactory("Player 2", "O");
+    let playerOne = playerFactory("Player 1", "X");
+    let playerTwo = playerFactory("Player 2", "O");
 
     //player 1 takes the first turn
     let obj = playerOne;
@@ -49,9 +49,6 @@ const game = (() => {
     const restartBtn = document.querySelector(".restart");
 
     let gameOver = false;
-
-    currentPlayer.textContent = `${playerOne.name}'s turn`;
-    playerDisplay.appendChild(currentPlayer);
 
     gameBoard.boardDisplay.addEventListener("click", (e) => {
         if (e.target.textContent) {
@@ -94,8 +91,16 @@ const game = (() => {
     });
 
     startBtn.addEventListener("click", () => {
+        const playerOneName = document.querySelector("#player1Name").value;
+        const playerTwoName = document.querySelector("#player2Name").value;
+
         gameArea.style.display = "inline";
         playerInfo.style.display = "none";
+        playerOne = playerFactory(playerOneName, "X");
+        playerTwo = playerFactory(playerTwoName, "O");
+
+        currentPlayer.textContent = `${playerOne.name}'s turn`;
+        playerDisplay.appendChild(currentPlayer);
     });
 
     function checkWinner(arr, player) {
