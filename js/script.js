@@ -32,6 +32,7 @@ const game = (() => {
     gameBoard.renderBoard();
     const playerOne = playerFactory("Player 1", "X");
     const playerTwo = playerFactory("Player 2", "O");
+
     //player 1 takes the first turn
     let obj = playerOne;
 
@@ -85,6 +86,11 @@ const game = (() => {
         gameBoard.board.forEach((element, index) => (gameBoard.board[index] = ""));
         console.log(gameBoard.board);
         gameBoard.renderBoard();
+        gameOver = false;
+        winnerDisplay.textContent = "";
+
+        currentPlayer.textContent = `${playerOne.name}'s turn`;
+        playerDisplay.appendChild(currentPlayer);
     });
 
     startBtn.addEventListener("click", () => {
