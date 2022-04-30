@@ -31,6 +31,13 @@ footer{
 footer{
     padding-top: 10px;
     padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer  img{
+    margin-left: 10px;
 }
 
 .diplayPlayer,
